@@ -25,6 +25,8 @@ foreach (glob("Model/*.php") as $filename)
 }
 
 Route::add('GET', '/login', 'LoginController@loginPage');
+Route::add('POST', '/login', 'LoginController@login');
+Route::add('GET', '/loginsuccess', 'LoginController@loginSuccess');
 
 Route::route();
 

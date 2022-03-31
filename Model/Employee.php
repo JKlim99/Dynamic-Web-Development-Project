@@ -12,6 +12,11 @@ class Employee extends Model
     {
         return $this->execute("INSERT INTO `employee`(`name`, `email`, `password`) VALUES ('". $name ."','". $email ."','". $password ."')");
     }
+
+    public function login($email = "", $password = "")
+    {
+        return $this->query("SELECT * FROM employee where email='".$email."' and password = '".$password."'");
+    }
 }
 
 ?>
