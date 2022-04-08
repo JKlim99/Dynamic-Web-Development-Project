@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /DWD%20project/
+RewriteBase /Dynamic-Web-Development-Project/
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.+)$ index.php [QSA,L]

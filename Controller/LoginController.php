@@ -2,8 +2,9 @@
 
 use Model\Employee as EmployeeModel;
 
-class LoginController extends Controller
+ class LoginController extends Controller
 {
+
     public function loginPage()
     {
         $employees = new EmployeeModel;
@@ -20,7 +21,14 @@ class LoginController extends Controller
         $employee_exist = $employee->login($email, $password);
         if($employee_exist)
         {
+            echo "<script> 
+                alert(' Login success');
+                
+            </script>";
             header("Location: /".ROOT_FOLDER_NAME."/loginsuccess");
+        }else 
+        {
+            echo "wrong username or password please go back to the log in page";
         }
     }
 
@@ -28,5 +36,52 @@ class LoginController extends Controller
     {
         $this->render('Views/loginSuccess.php');
     }
-}
+
+    public function registrationPage()
+    {
+        $this->render('Views/registration.php');
+    }
+
+    public function registration()
+    {
+        $name = $_REQUEST['name'];
+        $email = $_REQUEST['email'];
+        $password = $_REQUEST['password'];
+
+        $employee = new EmployeeModel;
+        $employee_created = $employee->createEmployee($name, $email, $password);
+        // echo "<script> alert('employee_created: '", $employee_created,")</script>";
+        if($employee_created)
+        {
+
+             header("Location: /".ROOT_FOLDER_NAME."/registered");
+        }
+    }
+
+    public function registered()
+    {
+        $this->render('Views/registered.php');
+    }
+
+    public function preview()
+    {
+        $employee = new EmployeeModel;
+        $result = $employee->getEmployee();
+
+            //  echo $row['name'], " ", $row['email'], '<br>';
+            $this->render('Views/preview.php', $result);
+    }
+
+    public function profile()
+    {
+        $id = $_REQUEST['id'];
+        $employee = new EmployeeModel;
+        $result = $employee->getProfile($id);
+         $this->render('Views/profile.php', $result);
+    }
+
+    
+        
+    }
+
 ?>

@@ -21,12 +21,22 @@ foreach (glob("Model/*.php") as $filename)
     // Prevent the model parent class being include again.
     if($filename == 'Model/Model.php')
         continue;
+        
     include $filename;
 }
 
 Route::add('GET', '/login', 'LoginController@loginPage');
 Route::add('POST', '/login', 'LoginController@login');
 Route::add('GET', '/loginsuccess', 'LoginController@loginSuccess');
+
+Route::add('GET', '/registration', 'LoginController@registrationPage');
+Route::add('POST', '/registration', 'LoginController@registration');
+Route::add('GET', '/registered', 'LoginController@registered');
+
+Route::add('GET', '/preview', 'LoginController@preview');
+
+Route::add('POST', '/profile', 'LoginController@profile');
+
 
 Route::route();
 
