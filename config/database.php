@@ -1,7 +1,7 @@
 <?php
 
 $config = [
-    "DB_HOST"           =>  "127.0.0.1",
+    "DB_HOST"           =>  "localhost",
     "DB_USERNAME"       =>  "root",
     "DB_PASSWORD"       =>  "",
     "DB_DATABASE_NAME"  =>  "employeeClocking"

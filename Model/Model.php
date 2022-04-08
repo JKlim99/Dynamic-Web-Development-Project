@@ -58,6 +58,8 @@ class Model
         try
         {
             $dbStatement = $this->execStatement($query);
+            return $dbStatement;
+            
         }
         catch(\Exception $e)
         {

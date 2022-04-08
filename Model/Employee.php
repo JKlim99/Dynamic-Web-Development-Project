@@ -8,6 +8,11 @@ class Employee extends Model
         return $this->query("SELECT * FROM employee LIMIT ".$limit);
     }
 
+    public function getProfile($id = 0)
+    {
+        return $this->query("SELECT * FROM employee WHERE id ='$id' ");
+    }
+
     public function createEmployee($name = "", $email = "", $password = "")
     {
         return $this->execute("INSERT INTO `employee`(`name`, `email`, `password`) VALUES ('". $name ."','". $email ."','". $password ."')");
@@ -18,5 +23,4 @@ class Employee extends Model
         return $this->query("SELECT * FROM employee where email='".$email."' and password = '".$password."'");
     }
 }
-
 ?>
