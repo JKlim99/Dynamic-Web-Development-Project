@@ -12,14 +12,15 @@ class Route
      * @param string $route     The URI of a route.
      * @param string $function  A specific class name and function name with the format of 'ClassName@FunctionName'.
      */
-    public static function add($method, $route, $function)
+    public static function add($method, $route, $function, $loginRequired = true)
     {
         try
         {    
             self::$routes[] = [
                 'method' => $method,
                 'route'  => $route,
-                'function'=> $function
+                'function'=> $function,
+                'loginRequired'=> $loginRequired
             ];
         }
         catch(Exception $e)
@@ -40,6 +41,8 @@ class Route
 
             // Remove the root folder name from the URI.
             $uri = str_replace('/'.ROOT_FOLDER_NAME, '', $request);
+            $uri = explode('?', $uri);
+            $uri = $uri[0];
 
             // Read the current request method. Example: POST, GET, etc.
             $method = $_SERVER['REQUEST_METHOD'];
@@ -56,6 +59,24 @@ class Route
                     $function = explode('@', $route['function']);
                     $className = $function[0];
                     $functionName = $function[1];
+
+                    // Check if the route requires login or not, if it does and the user haven't login yet then redirect them to login page.
+                    session_start();
+                    if($route['loginRequired'])
+                    {
+                        if(!isset($_SESSION['email']))
+                        {
+                            header("Location: /".ROOT_FOLDER_NAME."/login");
+                        }
+                    }
+                    // If user has login into system, route all non login-required page to dashboard, exp: login page.
+                    else
+                    {
+                        if(isset($_SESSION['email']))
+                        {
+                            header("Location: /".ROOT_FOLDER_NAME."/dashboard");
+                        }
+                    }
 
                     // Instantiate the specified class.
                     $class = new $className();

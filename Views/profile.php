@@ -1,19 +1,29 @@
+<?php include "sidebar.php";?>
 
-<table width="100%" border="1" style="border-collapse:collapse;">
-	<thead>
-		<tr>
-		<th><strong>id</strong></th>
-		<th><strong>Name</strong></th>
-		<th><strong>email</strong></th>
-        <th><strong>password</strong></th>
-		</tr>
-	</thead>
+<div class="container">
+	<h1>Edit Profile</h1>
+	<form action="updateProfile" method="POST">
+	<div class="form-group">
+			<label for="name">Name</label>
+			<input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required value="<?php echo $variables['name']?>">
+		</div>
+		<div class="form-group">
+			<label for="email">Email address</label>
+			<input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required value="<?php echo $variables['email']?>">
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-describedby="passwordValidate">
+			<small id="passwordValidate" class="form-text text-danger hide">Mismatch password and confirm password</small>
+		</div>
+		<div class="form-group">
+			<label for="c_password">Confirm Password</label>
+			<input type="password" class="form-control" id="c_password" name="c_password" placeholder="Confirm Password">
+		</div>
+		<br/>
+		<input type="hidden" name="id" value="<?php echo $variables['id']?>">
+		<button type="submit" class="btn btn-primary me-2" onclick="return validatePassword();">Update</button>
+	</form>
+</div>
 
-         
-			<?php 
-					echo " <tr> <td align='center'>".$variables[0]['id']."</td> 
-						 <td align='center'>".$variables[0]['name']."</td>
-						 <td align='center'>".$variables[0]['email']."</td>
-                         <td align='center'>".$variables[0]['password']."</td> </tr>";
-            ?>
-        </tbody></table>
+<?php include "Views/common/js/validateFormPassword.php"; ?>
