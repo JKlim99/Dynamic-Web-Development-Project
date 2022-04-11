@@ -18,7 +18,7 @@ use Model\Shift as ShiftModel;
         $day = $_REQUEST['day'];
         $shift = new ShiftModel;
         $result = $shift->getDetails($day);
-        $this->render('Views/shiftDetails.php', ['shift' => $result, 'success' => $success]);
+        $this->render('Views/shiftDetails.php', ['shift' => $result[0], 'success' => $success]);
     }
 
     public function shiftUpdate()

@@ -1,10 +1,10 @@
 <?php include "sidebar.php";?>
 
 <div class="container">
-	<h1>Edit <?php echo ucfirst($variables['shift']['day'])?> Shift</h1>
+	<h1>Edit <?php echo ucfirst($variables['shift']['day'])?> Schedule</h1>
 	<?php if($variables['success'] == 'update') { ?>
 	<div class="alert alert-success" role="alert">
-		Shift successfully updated
+		Schedule successfully updated
 	</div>
 	<?php } ?>
 	<form action="shiftUpdate" method="POST">

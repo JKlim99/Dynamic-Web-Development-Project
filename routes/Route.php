@@ -68,7 +68,7 @@ class Route
                         {
                             header("Location: /".ROOT_FOLDER_NAME."/login");
                         }
-                        else if(!$_SESSION['admin'] && !in_array($uri, ['/dashboard', '/profile', '/checkin', '/updateProfile', '/logout']))
+                        else if(!$_SESSION['admin'] && !in_array($uri, ['/dashboard', '/profile', '/checkin', '/updateProfile', '/shiftList', '/logout']))
                         {
                             header("Location: /".ROOT_FOLDER_NAME."/dashboard");
                         }

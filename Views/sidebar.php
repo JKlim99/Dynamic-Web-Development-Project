@@ -46,24 +46,24 @@
                 </li>
                 <?php if($_SESSION['admin']){ ?>
                 <li>
-                    <a href="employeeList" class="nav-link text-white <?php if(strpos($uri,'employee')) echo 'active';?>">
-                        <i class="fas fa-user fa-fw me-2"></i>
-                        <span class="title">Employee Management</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="shiftList" class="nav-link text-white <?php if(strpos($uri,'shift')) echo 'active';?>">
-                        <i class="fas fa-clock fa-fw me-2"></i>
-                        <span class="title">Shift Management</span>
-                    </a>
-                </li>
-                <li>
                     <a href="codeView" class="nav-link text-white <?php if(strpos($uri,'code')) echo 'active';?>">
                         <i class="fas fa-key fa-fw me-2"></i>
                         <span class="title">Code Generator</span>
                     </a>
                 </li>
+                <li>
+                    <a href="employeeList" class="nav-link text-white <?php if(strpos($uri,'employee')) echo 'active';?>">
+                        <i class="fas fa-user fa-fw me-2"></i>
+                        <span class="title">Employee Management</span>
+                    </a>
+                </li>
                 <?php } ?>
+                <li>
+                    <a href="shiftList" class="nav-link text-white <?php if(strpos($uri,'shift')) echo 'active';?>">
+                        <i class="fas fa-clock fa-fw me-2"></i>
+                        <span class="title">Working Schedule</span>
+                    </a>
+                </li>
             </ul>
             <hr>
             <a class="text-center profile-link" href="profile">View Profile</a>

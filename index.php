@@ -6,6 +6,9 @@ include 'config/database.php';
 include 'Model/Model.php';
 include 'Controller/Controller.php';
 
+// Set PHP default timezone to Malaysia timezone
+date_default_timezone_set("Asia/Kuala_Lumpur");
+
 // Include all the controller files into index.php.
 foreach (glob("Controller/*.php") as $filename)
 {
