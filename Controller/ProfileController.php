@@ -7,10 +7,11 @@ use Model\Employee as EmployeeModel;
 
     public function profile()
     {
+        $success = $_REQUEST['success'] ?? null;
         $id = $_SESSION['id'];
         $employee = new EmployeeModel;
         $result = $employee->getProfile($id);
-        $this->render('Views/profile.php', $result);
+        $this->render('Views/profile.php', ['result' => $result, 'success' => $success]);
     }
 
     public function updateProfile()
@@ -28,7 +29,7 @@ use Model\Employee as EmployeeModel;
             $employee->updatePassword($id, md5($password));
         }
 
-        header("Location: /".ROOT_FOLDER_NAME."/profile");
+        header("Location: /".ROOT_FOLDER_NAME."/profile?success=update");
     }
     
 }

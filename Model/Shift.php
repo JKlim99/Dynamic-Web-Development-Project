@@ -10,7 +10,7 @@ class Shift extends Model
 
     public function getDetails($day = "monday")
     {
-        return $this->query("SELECT * FROM shift WHERE day ='$day' ")[0]; // Return the first element from the query result (array)
+        return $this->query("SELECT * FROM shift WHERE day ='$day' ");
     }
 
     public function updateDetails($day = "monday", $startTime = "09:00", $endTime = "18:00", $breakDuration = "60")

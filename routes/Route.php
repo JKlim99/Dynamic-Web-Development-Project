@@ -68,6 +68,10 @@ class Route
                         {
                             header("Location: /".ROOT_FOLDER_NAME."/login");
                         }
+                        else if(!$_SESSION['admin'] && !in_array($uri, ['/dashboard', '/profile', '/checkin', '/updateProfile', '/logout']))
+                        {
+                            header("Location: /".ROOT_FOLDER_NAME."/dashboard");
+                        }
                     }
                     // If user has login into system, route all non login-required page to dashboard, exp: login page.
                     else

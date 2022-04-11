@@ -3,9 +3,9 @@ namespace Model;
 
 class Code extends Model
 {
-    public function getCode()
+    public function validateCode($code)
     {
-        return $this->query("SELECT * FROM code")[0];
+        return $this->query("SELECT * FROM `code` where `code` = '". $code ."'");
     }
 
     public function setCode($code = "AB123")

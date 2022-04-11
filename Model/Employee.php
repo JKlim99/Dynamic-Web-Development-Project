@@ -3,9 +3,13 @@ namespace Model;
 
 class Employee extends Model
 {
-    public function getEmployees($limit = 10)
+    public function getEmployees($employeeId = null)
     {
-        return $this->query("SELECT * FROM employee LIMIT ".$limit);
+        if($employeeId)
+        {
+            return $this->query("SELECT * FROM employee where `id` = ". $employeeId);
+        }
+        return $this->query("SELECT * FROM employee");
     }
 
     public function getProfile($id = 0)

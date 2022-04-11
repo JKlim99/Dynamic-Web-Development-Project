@@ -34,7 +34,9 @@ foreach (glob("Model/*.php") as $filename)
     Route::add('GET', '/logout', 'LoginController@logout');
 
     Route::add('GET', '/dashboard', 'DashboardController@dashboard');
+    Route::add('POST', '/checkin', 'DashboardController@checkIn');
     Route::add('GET', '/code', 'DashboardController@generateCode');
+    Route::add('GET', '/codeView', 'DashboardController@codeDisplay');
 
     Route::add('GET', '/employeeList', 'EmployeeController@employeeList');
     Route::add('GET', '/employeeCreate', 'EmployeeController@employeeCreatePage');
