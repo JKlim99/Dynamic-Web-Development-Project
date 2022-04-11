@@ -31,7 +31,7 @@ use Model\Employee as EmployeeModel;
             header("Location: /".ROOT_FOLDER_NAME."/dashboard");
         }else 
         {
-            echo "wrong username or password please go back to the log in page";
+            header("Location: /".ROOT_FOLDER_NAME."/login?invalid");
         }
     }
 

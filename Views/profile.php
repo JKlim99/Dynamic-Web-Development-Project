@@ -1,4 +1,5 @@
 <?php include "sidebar.php";?>
+<script src="Views/common/js/validateFormPassword.js"></script>
 
 <div class="container">
 	<h1>Edit Profile</h1>
@@ -30,5 +31,3 @@
 		<button type="submit" class="btn btn-primary me-2" onclick="return validatePassword();">Update</button>
 	</form>
 </div>
-
-<?php include "Views/common/js/validateFormPassword.php"; ?>

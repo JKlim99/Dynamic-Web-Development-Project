@@ -22,8 +22,12 @@ class Employee extends Model
         return $this->execute("INSERT INTO `employee`(`name`, `email`, `password`, `admin`) VALUES ('". $name ."','". $email ."','". $password ."','". $admin ."')");
     }
 
-    public function updateEmployee($id = 0, $name = "", $email = "", $admin = 0)
+    public function updateEmployee($id = 0, $name = "", $email = "", $admin = null)
     {
+        if($admin == null)
+        {
+            return $this->execute("UPDATE `employee` SET `name` = '". $name ."', `email` = '". $email ."' where `id` = ". $id);
+        }
         return $this->execute("UPDATE `employee` SET `name` = '". $name ."', `email` = '". $email ."', `admin` = '". $admin ."' where `id` = ". $id);
     }
 

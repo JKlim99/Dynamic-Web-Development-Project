@@ -12,7 +12,11 @@
         <form method="post" action="login">
             <img class="mb-2" src="assets/images/logo.png" alt="" width="300" height="100">
             <h1 class="h3 mb-3 fw-normal">Login to access your account</h1>
-
+            <?php if(isset($_REQUEST['invalid'])) { ?>
+            <div class="alert alert-danger" role="alert">
+                Incorrect Email address or Password
+            </div>
+            <?php } ?>
             <div class="form-floating">
                 <input type="email" class="form-control" id="floatingInput" name="email" placeholder="Email address">
                 <label for="floatingInput">Email address</label>
