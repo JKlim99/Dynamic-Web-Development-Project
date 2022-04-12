@@ -1,7 +1,29 @@
 
 <head>
+    <?php
+        // Read the current request URI.
+        $request = $_SERVER['REQUEST_URI'];
+
+        // Remove the root folder name from the URI.
+        $uri = str_replace('/'.ROOT_FOLDER_NAME, '', $request);
+        $uri = explode('?', $uri);
+        $uri = $uri[0];
+
+        if(strpos($uri,'dashboard'))
+            $title = 'Dashboard';
+        elseif(strpos($uri,'code'))
+            $title = 'Code Generator';
+        elseif(strpos($uri,'employee'))
+            $title = 'Employee Management';
+        elseif(strpos($uri,'shift'))
+            $title = 'Working Schedule';
+        elseif(strpos($uri,'profile'))
+            $title = 'Profile';
+        else
+            $title = '';
+    ?>
     <title>
-        SuperManager - Dashboard
+        SuperManager - <?php echo $title; ?>
     </title>
 
     <link rel="icon" href="assets/favicon/favicon.png"/> <!-- Logo on tab -->
@@ -22,15 +44,6 @@
     </style>
 </head>
 <body>
-    <?php 
-        // Read the current request URI.
-        $request = $_SERVER['REQUEST_URI'];
-
-        // Remove the root folder name from the URI.
-        $uri = str_replace('/'.ROOT_FOLDER_NAME, '', $request);
-        $uri = explode('?', $uri);
-        $uri = $uri[0];
-    ?>
     <main>
         <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
             <a href="dashboard" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
