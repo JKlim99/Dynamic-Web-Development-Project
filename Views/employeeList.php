@@ -4,7 +4,7 @@
 	<h1>
 		Employee Management
 		<a class="btn btn-primary" href="employeeCreate">
-			<i class="fas fa-plus fa-fw"></i>
+			<i class="bi bi-plus-lg"></i>
 			<span>Create New Employee</span>
 		</a>
 	</h1>

@@ -6,7 +6,7 @@
 
     <link rel="icon" href="assets/favicon/favicon.png"/> <!-- Logo on tab -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="Views/common/fontawesome/css/all.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link href="Views/common/css/main.css" rel="stylesheet"/>
     <script src="Views/common/js/jquery-3.6.0.min.js"></script>
     <style>
@@ -40,27 +40,27 @@
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
                     <a href="dashboard" class="nav-link text-white <?php if(strpos($uri,'dashboard')) echo 'active';?>">
-                        <i class="fas fa-line-chart fa-fw me-2"></i>
+                        <i class="bi bi-bar-chart-line-fill me-2"></i>
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
                 <?php if($_SESSION['admin']){ ?>
                 <li>
                     <a href="codeView" class="nav-link text-white <?php if(strpos($uri,'code')) echo 'active';?>">
-                        <i class="fas fa-key fa-fw me-2"></i>
+                        <i class="bi bi-123 me-2"></i>
                         <span class="title">Code Generator</span>
                     </a>
                 </li>
                 <li>
                     <a href="employeeList" class="nav-link text-white <?php if(strpos($uri,'employee')) echo 'active';?>">
-                        <i class="fas fa-user fa-fw me-2"></i>
+                        <i class="bi bi-people-fill me-2"></i>
                         <span class="title">Employee Management</span>
                     </a>
                 </li>
                 <?php } ?>
                 <li>
                     <a href="shiftList" class="nav-link text-white <?php if(strpos($uri,'shift')) echo 'active';?>">
-                        <i class="fas fa-clock fa-fw me-2"></i>
+                        <i class="bi bi-calendar3 me-2"></i>
                         <span class="title">Working Schedule</span>
                     </a>
                 </li>

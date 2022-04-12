@@ -7,7 +7,7 @@
             Check IN/OUT Code
         </div>
         <div class="card-body">
-            <i class="fas fa-clock fa-fw"></i>
+            <i class="bi bi-stopwatch fa-fw"></i>
             <span id="timer">60</span>
             <h1 id="code"></h1>
         </div>
