@@ -1,4 +1,5 @@
 <?php include "sidebar.php";?>
+<script src="Views/common/js/validateFormPassword.js"></script>
 
 <div class="container">
 	<h1>Create New Employee</h1>
@@ -30,5 +31,3 @@
 		<a href="employeeList">back to list</a>
 	</form>
 </div>
-
-<?php include "Views/common/js/validateFormPassword.php"; ?>
