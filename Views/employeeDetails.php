@@ -2,20 +2,20 @@
 <script src="Views/common/js/validateFormPassword.js"></script>
 
 <div class="container">
-	<h1>Edit Profile</h1>
+	<h1>Edit Employee</h1>
 	<?php if($variables['success'] == 'update') { ?>
 	<div class="alert alert-success" role="alert">
-		Profile successfully updated
+		Employee successfully updated
 	</div>
 	<?php } ?>
-	<form action="updateProfile" method="POST">
+	<form action="employeeUpdate" method="POST">
 	<div class="form-group">
 			<label for="name">Name</label>
-			<input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required value="<?php echo $variables['result']['name']?>">
+			<input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required value="<?php echo $variables['employee']['name']?>">
 		</div>
 		<div class="form-group">
 			<label for="email">Email address</label>
-			<input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required value="<?php echo $variables['result']['email']?>">
+			<input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required value="<?php echo $variables['employee']['email']?>">
 		</div>
 		<div class="form-group">
 			<label for="password">Password</label>
@@ -27,7 +27,13 @@
 			<input type="password" class="form-control" id="c_password" name="c_password" placeholder="Confirm Password">
 		</div>
 		<br/>
-		<input type="hidden" name="id" value="<?php echo $variables['result']['id']?>">
+		<div class="form-check">
+			<input type="hidden" name="admin" value="0">
+			<input type="checkbox" class="form-check-input" id="admin" name="admin" value="1" <?php if($variables['employee']['admin']){echo "checked";}?> >
+			<label class="form-check-label" for="admin">Mark as admin</label>
+		</div>
+		<input type="hidden" name="id" value="<?php echo $variables['employee']['id']?>">
 		<button type="submit" class="btn btn-primary me-2" onclick="return validatePassword();">Update</button>
+		<a href="employeeList">back to list</a>
 	</form>
 </div>

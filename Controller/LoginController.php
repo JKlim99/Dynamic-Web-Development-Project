@@ -5,83 +5,45 @@ use Model\Employee as EmployeeModel;
  class LoginController extends Controller
 {
 
+    public function default()
+    {
+        header("Location: /".ROOT_FOLDER_NAME."/login");
+    }
+
     public function loginPage()
     {
-        $employees = new EmployeeModel;
-        $employees = $employees->getEmployee();
-        $this->render('Views/login.php', ['employees'=>$employees]);
+        $this->render('Views/login.php');
     }
 
     public function login()
     {
         $email = $_REQUEST['email'];
-        $password = $_REQUEST['password'];
+        $password = md5($_REQUEST['password']); // encrypting password with md5 method
 
         $employee = new EmployeeModel;
-        $employee_exist = $employee->login($email, $password);
-        if($employee_exist)
+        $employee = $employee->login($email, $password);
+        if($employee)
         {
-            echo "<script> 
-                alert(' Login success');
-                
-            </script>";
-            header("Location: /".ROOT_FOLDER_NAME."/loginsuccess");
+            session_start();
+            $_SESSION['email'] = $email;
+            $_SESSION['id'] = $employee[0]['id'];
+            $_SESSION['admin'] = $employee[0]['admin'];
+            header("Location: /".ROOT_FOLDER_NAME."/dashboard");
         }else 
         {
-            echo "wrong username or password please go back to the log in page";
+            header("Location: /".ROOT_FOLDER_NAME."/login?invalid");
         }
     }
 
-    public function loginSuccess()
+    public function logout()
     {
-        $this->render('Views/loginSuccess.php');
-    }
+        session_start();
 
-    public function registrationPage()
-    {
-        $this->render('Views/registration.php');
-    }
-
-    public function registration()
-    {
-        $name = $_REQUEST['name'];
-        $email = $_REQUEST['email'];
-        $password = $_REQUEST['password'];
-
-        $employee = new EmployeeModel;
-        $employee_created = $employee->createEmployee($name, $email, $password);
-        // echo "<script> alert('employee_created: '", $employee_created,")</script>";
-        if($employee_created)
-        {
-
-             header("Location: /".ROOT_FOLDER_NAME."/registered");
+        if(session_destroy()) {
+            header("Location: /".ROOT_FOLDER_NAME."/login");
         }
     }
-
-    public function registered()
-    {
-        $this->render('Views/registered.php');
-    }
-
-    public function preview()
-    {
-        $employee = new EmployeeModel;
-        $result = $employee->getEmployee();
-
-            //  echo $row['name'], " ", $row['email'], '<br>';
-            $this->render('Views/preview.php', $result);
-    }
-
-    public function profile()
-    {
-        $id = $_REQUEST['id'];
-        $employee = new EmployeeModel;
-        $result = $employee->getProfile($id);
-         $this->render('Views/profile.php', $result);
-    }
-
-    
         
-    }
+}
 
 ?>
